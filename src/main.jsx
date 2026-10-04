@@ -35,7 +35,7 @@ import {
 import { supabase } from "./supabase";
 import "./styles.css";
 
-const API_BASE = "http://localhost:3001/api";
+const API_BASE = "https://ishra-ai-backend.onrender.com/api";
 const API_URL = `${API_BASE}/chat`;
 const IMAGE_API_URL = `${API_BASE}/generate-image`;
 
