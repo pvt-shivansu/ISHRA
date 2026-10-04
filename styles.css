@@ -1,0 +1,2017 @@
+*{box-sizing:border-box}
+
+body{
+  margin:0;
+  font-family:Inter,system-ui,-apple-system,"Segoe UI",sans-serif;
+  background:#05080d;
+  color:#e8eef8;
+}
+
+button,input,select{font:inherit}
+button{cursor:pointer}
+
+.app{
+  min-height:100vh;
+  background:linear-gradient(135deg,#05080d 0%,#07131c 48%,#082333 100%);
+  color:#e8eef8;
+}
+
+.muted{color:#91a0b5;line-height:1.55}
+.tiny{font-size:12px;color:#65748a;text-align:center}
+.eyebrow{font-size:11px;letter-spacing:.14em;font-weight:700;color:#7e90aa}
+
+.brand-mark{
+  width:56px;
+  height:56px;
+  border-radius:18px;
+  display:grid;
+  place-items:center;
+  background:#122036;
+  border:1px solid #253653;
+  margin-bottom:18px
+}
+
+.brand-mark.large{width:72px;height:72px}
+.brand-mark.mini{width:34px;height:34px;border-radius:11px;margin:0}
+
+.auth-page,.welcome-page{
+  min-height:100vh;
+  display:grid;
+  place-items:center;
+  padding:24px;
+  background:linear-gradient(135deg,#05080d 0%,#071923 48%,#0b3044 100%);
+}
+
+.auth-card,.welcome-card{
+  width:min(430px,100%);
+  background:#0e1625;
+  border:1px solid #20304a;
+  border-radius:26px;
+  padding:34px;
+  box-shadow:0 25px 80px #0007
+}
+
+.auth-card h1,.welcome-card h1{margin:0 0 7px;font-size:32px}
+
+.auth-card label{
+  display:block;
+  margin:20px 0 8px;
+  font-size:13px;
+  color:#a9b6c8
+}
+
+.auth-card input,.auth-card select{
+  width:100%;
+  padding:13px 14px;
+  border-radius:12px;
+  border:1px solid #273953;
+  background:#0a111e;
+  color:#fff;
+  outline:none
+}
+
+.primary{
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  gap:9px;
+  border:0;
+  border-radius:12px;
+  background:#dce8ff;
+  color:#0a1220;
+  font-weight:800;
+  padding:13px 18px;
+  margin-top:22px
+}
+
+.primary:disabled{opacity:.35}
+.full{width:100%}
+
+.profile-pills{
+  display:flex;
+  gap:8px;
+  flex-wrap:wrap;
+  margin:22px 0
+}
+
+.profile-pills span,.language-chip{
+  padding:7px 10px;
+  border-radius:99px;
+  background:#16243a;
+  border:1px solid #263956;
+  font-size:12px
+}
+
+.dashboard{min-height:100vh}
+
+.dashboard-top,.topbar{
+  height:70px;
+  padding:0 5vw;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  border-bottom:1px solid #172438;
+  background:#050a10
+}
+
+.brand-small{
+  display:flex;
+  align-items:center;
+  gap:10px;
+  font-weight:800;
+  letter-spacing:.04em
+}
+
+.top-actions{display:flex;gap:8px}
+
+.icon-btn,.ghost,.profile-button{
+  background:transparent;
+  color:inherit;
+  border:1px solid transparent;
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  gap:8px;
+  border-radius:10px;
+  padding:9px
+}
+
+.icon-btn:hover,.ghost:hover,.profile-button:hover{
+  background:#111d2e;
+  border-color:#22344e
+}
+
+.profile-button{width:40px;height:40px}
+
+.dashboard-content{
+  width:min(1100px,92%);
+  margin:auto;
+  padding:55px 0 70px
+}
+
+.greeting{margin-bottom:35px}
+.greeting h1{font-size:34px;margin:8px 0}
+
+.schedule-section{margin-bottom:28px}
+
+.section-head{
+  display:flex;
+  justify-content:space-between;
+  align-items:flex-start;
+  margin-bottom:18px
+}
+
+.section-head.compact{align-items:center}
+
+.section-head h1,.section-head h2{
+  margin:6px 0;
+  font-size:30px
+}
+
+.section-head h2{font-size:20px}
+
+.schedule-card{
+  border:1px solid #1e304a;
+  background:#0e1727;
+  border-radius:22px;
+  padding:25px
+}
+
+.current-label{
+  font-size:11px;
+  letter-spacing:.14em;
+  color:#7e90aa;
+  font-weight:800
+}
+
+.schedule-card h2{font-size:25px;margin:9px 0}
+
+.schedule-meta{
+  display:flex;
+  gap:20px;
+  color:#a9b7ca;
+  font-size:13px;
+  flex-wrap:wrap
+}
+
+.schedule-strip{
+  display:flex;
+  gap:10px;
+  overflow:auto;
+  margin-top:25px
+}
+
+.schedule-strip button{
+  min-width:175px;
+  text-align:left;
+  padding:14px;
+  border-radius:14px;
+  background:#0a111e;
+  border:1px solid #1d2c43;
+  color:#8f9eb2
+}
+
+.schedule-strip button.active{
+  border-color:#6f9cff;
+  background:#13223a;
+  color:#e9f1ff
+}
+
+.schedule-strip small,.schedule-strip b,.schedule-strip span{display:block}
+
+.schedule-strip small{
+  font-size:10px;
+  text-transform:uppercase;
+  letter-spacing:.1em;
+  margin-bottom:7px
+}
+
+.schedule-strip b{font-size:13px;margin-bottom:6px}
+.schedule-strip span{font-size:11px}
+
+/* =========================
+   DIVE INTO ISHRA
+   ========================= */
+
+.dive-bar{
+  width:100%;
+  display:flex;
+  align-items:center;
+  gap:16px;
+  text-align:left;
+  padding:20px 22px;
+  margin:30px 0;
+  border-radius:19px;
+  border:1px solid #facc15;
+  background:linear-gradient(105deg,#facc15,#fde047);
+  color:#080b10;
+  box-shadow:0 14px 40px #0005;
+  transition:.22s
+}
+
+.dive-bar:hover{
+  transform:translateY(-3px);
+  border-color:#ffe66b;
+  background:linear-gradient(105deg,#fde047,#facc15);
+  box-shadow:0 18px 50px #0007
+}
+
+.dive-bar:active{transform:scale(.985)}
+
+.dive-icon{
+  width:43px;
+  height:43px;
+  border-radius:13px;
+  background:#080b10;
+  color:#facc15;
+  display:grid;
+  place-items:center
+}
+
+.dive-bar:hover .dive-icon{transform:translateX(4px)}
+
+.dive-copy{
+  display:flex;
+  flex-direction:column;
+  gap:3px
+}
+
+.dive-copy strong{
+  font-size:17px;
+  color:#080b10
+}
+
+.dive-copy span{
+  font-size:12px;
+  color:#27300d
+}
+
+.dive-arrow{
+  margin-left:auto;
+  color:#080b10
+}
+
+/* ========================= */
+
+.dashboard-links{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:12px
+}
+
+.dashboard-links button{
+  display:flex;
+  align-items:center;
+  gap:12px;
+  padding:17px;
+  border:1px solid #1d2c43;
+  background:#0d1523;
+  color:#dfe8f5;
+  border-radius:15px;
+  text-align:left
+}
+
+.dashboard-links button svg:last-child{
+  margin-left:auto;
+  color:#667892
+}
+
+.page-shell{min-height:100vh}
+
+.page-content{
+  width:min(1100px,92%);
+  margin:auto;
+  padding:45px 0 70px
+}
+
+.narrow{max-width:800px}
+
+.subject-grid{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:14px
+}
+
+.subject-card,.progress-card,.material-card,.overall-card,.settings-card{
+  border:1px solid #1e304a;
+  background:#0e1727;
+  border-radius:18px
+}
+
+.subject-card{
+  padding:20px;
+  text-align:left;
+  color:inherit
+}
+
+.subject-card:hover{
+  border-color:#48668f;
+  transform:translateY(-2px)
+}
+
+.subject-icon,.modal-icon{
+  width:42px;
+  height:42px;
+  border-radius:12px;
+  background:#15243a;
+  display:grid;
+  place-items:center
+}
+
+.subject-card h3{
+  font-size:16px;
+  margin:16px 0 7px
+}
+
+.subject-card p{
+  font-size:12px;
+  color:#8190a5;
+  min-height:32px
+}
+
+.mini-progress,.progress-track{
+  height:5px;
+  background:#1b293e;
+  border-radius:99px;
+  overflow:hidden
+}
+
+.mini-progress span,.progress-track div{
+  display:block;
+  height:100%;
+  background:#7da3ff;
+  border-radius:99px
+}
+
+.subject-card small{
+  display:flex;
+  align-items:center;
+  gap:5px;
+  margin-top:11px;
+  color:#92a1b7
+}
+
+.upload-button{
+  display:inline-flex;
+  align-items:center;
+  gap:8px;
+  padding:9px 13px;
+  border:1px solid #293b56;
+  border-radius:10px;
+  background:#101c2d;
+  cursor:pointer
+}
+
+.material-list{display:grid;gap:10px}
+
+.material-card{
+  padding:16px;
+  display:flex;
+  align-items:center;
+  gap:14px
+}
+
+.material-card h3{
+  margin:0 0 4px;
+  font-size:15px
+}
+
+.material-card p{
+  margin:0;
+  color:#7e8da3;
+  font-size:12px
+}
+
+.material-card .icon-btn{margin-left:auto}
+
+.material-icon{
+  width:42px;
+  height:42px;
+  border-radius:12px;
+  background:#15243a;
+  display:grid;
+  place-items:center;
+  color:#9bb8ef
+}
+
+.overall-card{
+  padding:25px;
+  display:flex;
+  align-items:center;
+  gap:35px;
+  margin-bottom:18px
+}
+
+.overall-card strong{
+  display:block;
+  font-size:44px;
+  margin-top:4px
+}
+
+.overall-track{
+  flex:1;
+  height:10px;
+  background:#1a283c;
+  border-radius:99px
+}
+
+.overall-track span{
+  display:block;
+  height:100%;
+  background:#7da3ff;
+  border-radius:99px
+}
+
+.subject-progress-grid{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:12px
+}
+
+.progress-card{padding:18px}
+
+.progress-card>div:first-child{
+  display:flex;
+  justify-content:space-between;
+  margin-bottom:13px;
+  font-size:13px
+}
+
+.progress-card span{color:#8ea0b9}
+
+.profile-hero{
+  display:flex;
+  align-items:center;
+  gap:18px;
+  margin-bottom:25px
+}
+
+.profile-avatar{
+  width:72px;
+  height:72px;
+  border-radius:22px;
+  background:#162a47;
+  display:grid;
+  place-items:center;
+  font-size:28px;
+  font-weight:800
+}
+
+.profile-hero h1{margin:5px 0}
+.profile-hero p{margin:0;color:#8494aa}
+
+.settings-card{padding:10px}
+
+.settings-card>div{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  padding:17px;
+  border-bottom:1px solid #1b293d
+}
+
+.settings-card>div:last-child{border-bottom:0}
+.settings-card span{color:#8494aa;font-size:13px}
+
+.ishra-page{
+  min-height:100vh;
+  padding:0 3vw 3vw;
+  background:linear-gradient(135deg,#05080d 0%,#061722 48%,#082d40 100%)
+}
+
+.ishra-top{
+  height:68px;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  border-bottom:1px solid #172438
+}
+
+.ishra-brand{
+  display:flex;
+  align-items:center;
+  gap:8px;
+  font-weight:800
+}
+
+.ishra-welcome{
+  width:min(1150px,96%);
+  margin:32px auto 20px;
+  display:flex;
+  gap:14px;
+  align-items:center
+}
+
+.avatar{
+  width:46px;
+  height:46px;
+  border-radius:15px;
+  background:#172840;
+  display:grid;
+  place-items:center
+}
+
+.ishra-welcome h1{
+  margin:3px 0;
+  font-size:23px
+}
+
+.ishra-welcome p{
+  margin:0;
+  color:#7f8ea5;
+  font-size:13px
+}
+
+.workspace{
+  width:min(1150px,96%);
+  margin:auto;
+  display:flex;
+  height:calc(100vh - 190px);
+  min-height:480px;
+  border:1px solid #1d2d45;
+  border-radius:22px;
+  overflow:hidden;
+  background:#0b1320
+}
+
+.chat-panel{
+  display:flex;
+  flex-direction:column;
+  min-width:40%
+}
+
+.chat-messages{
+  flex:1;
+  padding:24px;
+  overflow:auto
+}
+
+.message-row{
+  display:flex;
+  margin:10px 0
+}
+
+.message-row.student{justify-content:flex-end}
+
+.message-bubble{
+  max-width:75%;
+  padding:12px 15px;
+  border-radius:15px;
+  background:#13223a;
+  color:#dce6f4;
+  font-size:14px;
+  line-height:1.5
+}
+
+.message-row.student .message-bubble{
+  background:#dce8ff;
+  color:#0c1523;
+  border-bottom-right-radius:5px
+}
+
+.message-row.ishra .message-bubble{
+  border-bottom-left-radius:5px
+}
+
+.chat-input-wrap{
+  margin:15px;
+  border:1px solid #22344e;
+  background:#0c1523;
+  border-radius:14px;
+  display:flex;
+  align-items:center;
+  padding:6px
+}
+
+.chat-input-wrap input{
+  flex:1;
+  border:0;
+  outline:0;
+  background:transparent;
+  color:#fff;
+  padding:10px
+}
+
+.send-btn{
+  width:37px;
+  height:37px;
+  border:0;
+  border-radius:10px;
+  background:#dce8ff;
+  color:#09111d;
+  display:grid;
+  place-items:center
+}
+
+.resize-handle{
+  width:8px;
+  cursor:col-resize;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  background:#0b1320
+}
+
+.resize-handle span{
+  height:55px;
+  width:2px;
+  background:#30435e;
+  border-radius:2px
+}
+
+.progress-panel{
+  flex:1;
+  min-width:20%;
+  padding:22px;
+  background:#0c1523;
+  overflow:auto
+}
+
+.panel-heading{
+  display:flex;
+  justify-content:space-between
+}
+
+.panel-heading h3{
+  margin:5px 0 20px
+}
+
+.progress-ring{
+  width:125px;
+  height:125px;
+  border-radius:50%;
+  border:10px solid #243652;
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  justify-content:center;
+  margin:8px auto 25px
+}
+
+.progress-ring strong{font-size:27px}
+.progress-ring span{font-size:11px;color:#8190a6}
+
+.progress-row{margin:16px 0}
+
+.progress-row>div:first-child{
+  display:flex;
+  justify-content:space-between;
+  font-size:12px;
+  margin-bottom:7px
+}
+
+.progress-row b{color:#8395ae}
+
+.overlay{
+  position:fixed;
+  inset:0;
+  background:#030711b8;
+  backdrop-filter:blur(8px);
+  z-index:20;
+  display:grid;
+  place-items:center;
+  padding:20px
+}
+
+.language-modal{
+  width:min(410px,100%);
+  background:#0e1727;
+  border:1px solid #2a3e5c;
+  border-radius:24px;
+  padding:28px;
+  box-shadow:0 25px 90px #0009
+}
+
+.language-modal h2{margin:15px 0 7px}
+
+.language-option{
+  width:100%;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  margin-top:10px;
+  padding:15px;
+  border-radius:13px;
+  border:1px solid #263956;
+  background:#101c2d;
+  color:#e8eef8
+}
+
+.language-option:hover{
+  border-color:#6f9cff;
+  background:#14243b
+}
+
+.topic-completed{
+  border-color:rgba(34,197,94,.35)
+}
+
+.success-btn{
+  border:1px solid rgba(34,197,94,.35);
+  background:rgba(34,197,94,.12);
+  color:#4ade80;
+  padding:9px 14px;
+  border-radius:10px;
+  cursor:pointer;
+  font-weight:600
+}
+
+.success-btn:disabled,
+.ghost:disabled{
+  opacity:.6;
+  cursor:not-allowed
+}
+
+.typing-bubble{
+  display:flex;
+  gap:5px;
+  align-items:center;
+  padding:12px 16px
+}
+
+.typing-bubble span{
+  width:6px;
+  height:6px;
+  border-radius:50%;
+  background:currentColor;
+  animation:ishraTyping 1.2s infinite ease-in-out
+}
+
+.typing-bubble span:nth-child(2){animation-delay:.15s}
+.typing-bubble span:nth-child(3){animation-delay:.3s}
+
+@keyframes ishraTyping{
+  0%,60%,100%{
+    opacity:.3;
+    transform:translateY(0)
+  }
+  30%{
+    opacity:1;
+    transform:translateY(-3px)
+  }
+}
+
+@media(max-width:850px){
+  .subject-grid{grid-template-columns:1fr 1fr}
+  .dashboard-links{grid-template-columns:1fr}
+}
+
+@media(max-width:650px){
+  .greeting h1{font-size:26px}
+
+  .subject-grid,
+  .subject-progress-grid{
+    grid-template-columns:1fr
+  }
+
+  .dashboard-links{grid-template-columns:1fr}
+
+  .workspace{
+    flex-direction:column;
+    height:auto;
+    min-height:calc(100vh - 175px)
+  }
+
+  .chat-panel{
+    width:100%!important;
+    height:60vh
+  }
+
+  .resize-handle{display:none}
+
+  .progress-panel{height:280px}
+
+  .ishra-welcome{align-items:flex-start}
+
+  .ishra-page{padding:0 3% 3%}
+
+  .material-card{padding:13px}
+}
+
+
+/* =========================================
+   ISHRA — CINEMATIC AI BACKGROUND
+   Dark + Electric Blue + Cyan + Violet
+   ========================================= */
+
+body{
+  background:#02050a;
+}
+
+/* Main moving colour field */
+body::before{
+  content:"";
+  position:fixed;
+  inset:-20%;
+  z-index:-10;
+  pointer-events:none;
+
+  background:
+    radial-gradient(
+      circle at 18% 25%,
+      rgba(0,170,255,.42),
+      transparent 28%
+    ),
+    radial-gradient(
+      circle at 82% 18%,
+      rgba(80,70,255,.34),
+      transparent 30%
+    ),
+    radial-gradient(
+      circle at 72% 78%,
+      rgba(0,240,220,.25),
+      transparent 28%
+    ),
+    radial-gradient(
+      circle at 25% 82%,
+      rgba(190,40,255,.18),
+      transparent 30%
+    ),
+    linear-gradient(
+      135deg,
+      #010307 0%,
+      #03111c 25%,
+      #061b2c 45%,
+      #08051a 68%,
+      #02060d 100%
+    );
+
+  background-size:150% 150%;
+  animation:ishraCinematic 16s ease-in-out infinite alternate;
+}
+
+/* Soft moving light */
+body::after{
+  content:"";
+  position:fixed;
+  inset:-30%;
+  z-index:-9;
+  pointer-events:none;
+
+  background:
+    radial-gradient(
+      ellipse at 20% 50%,
+      rgba(0,210,255,.22),
+      transparent 22%
+    ),
+    radial-gradient(
+      ellipse at 75% 30%,
+      rgba(110,70,255,.20),
+      transparent 25%
+    ),
+    radial-gradient(
+      ellipse at 65% 80%,
+      rgba(0,255,210,.14),
+      transparent 23%
+    );
+
+  filter:blur(55px);
+  animation:ishraLight 12s ease-in-out infinite alternate;
+}
+
+@keyframes ishraCinematic{
+  0%{
+    background-position:0% 45%;
+    transform:scale(1);
+  }
+
+  25%{
+    background-position:35% 15%;
+    transform:scale(1.04);
+  }
+
+  50%{
+    background-position:100% 45%;
+    transform:scale(1.08);
+  }
+
+  75%{
+    background-position:65% 90%;
+    transform:scale(1.04);
+  }
+
+  100%{
+    background-position:10% 55%;
+    transform:scale(1);
+  }
+}
+
+@keyframes ishraLight{
+  0%{
+    transform:translate(-10%,-5%) scale(.9);
+    opacity:.65;
+  }
+
+  50%{
+    transform:translate(12%,8%) scale(1.15);
+    opacity:1;
+  }
+
+  100%{
+    transform:translate(-5%,18%) scale(.95);
+    opacity:.7;
+  }
+}
+
+
+/* =========================================
+   FLOATING ENERGY PARTICLES / SPARKS
+   ========================================= */
+
+.app,
+.auth-page,
+.welcome-page,
+.dashboard,
+.page-shell,
+.ishra-page{
+  position:relative;
+  overflow:hidden;
+}
+
+/* Particle field */
+.app::before,
+.auth-page::before,
+.welcome-page::before,
+.dashboard::before,
+.page-shell::before,
+.ishra-page::before{
+  content:"";
+  position:absolute;
+  inset:0;
+  pointer-events:none;
+  z-index:0;
+
+  background-image:
+    radial-gradient(circle,rgba(0,200,255,.85) 0 1px,transparent 2px),
+    radial-gradient(circle,rgba(120,100,255,.7) 0 1px,transparent 2px),
+    radial-gradient(circle,rgba(0,255,220,.65) 0 1px,transparent 2px),
+    radial-gradient(circle,rgba(255,255,255,.5) 0 1px,transparent 2px);
+
+  background-size:
+    150px 170px,
+    220px 240px,
+    310px 290px,
+    390px 350px;
+
+  background-position:
+    10px 20px,
+    80px 120px,
+    150px 40px,
+    40px 200px;
+
+  animation:ishraParticles 22s linear infinite;
+  opacity:.55;
+}
+
+@keyframes ishraParticles{
+  0%{
+    background-position:
+      10px 20px,
+      80px 120px,
+      150px 40px,
+      40px 200px;
+  }
+
+  50%{
+    background-position:
+      80px 150px,
+      180px 30px,
+      40px 170px,
+      190px 70px;
+  }
+
+  100%{
+    background-position:
+      10px 20px,
+      80px 120px,
+      150px 40px,
+      40px 200px;
+  }
+}
+
+
+/* =========================================
+   MOVING LIGHT STREAK
+   ========================================= */
+
+.ishra-page::after,
+.dashboard::after{
+  content:"";
+  position:absolute;
+  width:55%;
+  height:180px;
+  top:18%;
+  left:-20%;
+  pointer-events:none;
+  z-index:0;
+
+  background:linear-gradient(
+    90deg,
+    transparent,
+    rgba(0,190,255,.10),
+    rgba(100,80,255,.16),
+    transparent
+  );
+
+  filter:blur(35px);
+  transform:rotate(-12deg);
+  animation:ishraStreak 13s ease-in-out infinite;
+}
+
+@keyframes ishraStreak{
+  0%{
+    left:-25%;
+    opacity:0;
+  }
+
+  25%{
+    opacity:.8;
+  }
+
+  55%{
+    left:75%;
+    opacity:.45;
+  }
+
+  100%{
+    left:110%;
+    opacity:0;
+  }
+}
+
+
+/* =========================================
+   KEEP CONTENT ABOVE EFFECTS
+   ========================================= */
+
+.app > *,
+.auth-page > *,
+.welcome-page > *,
+.dashboard > *,
+.page-shell > *,
+.ishra-page > *{
+  position:relative;
+  z-index:1;
+}
+
+
+/* =========================================
+   TRANSPARENT PAGE BACKGROUNDS
+   ========================================= */
+
+.app,
+.dashboard,
+.page-shell,
+.ishra-page,
+.auth-page,
+.welcome-page{
+  background:transparent !important;
+}
+
+
+/* =========================================
+   ISHRA CHAT — DARK GLASS
+   ========================================= */
+
+.workspace{
+  background:rgba(3,10,18,.88);
+  backdrop-filter:blur(18px);
+}
+
+.chat-panel{
+  background:rgba(3,10,18,.78);
+}
+
+.progress-panel{
+  background:rgba(5,13,23,.88);
+}
+
+.ishra-top{
+  background:rgba(2,6,11,.48);
+  backdrop-filter:blur(14px);
+}
+
+
+/* =========================================
+   LOGIN CARD — GLASS EFFECT
+   ========================================= */
+
+.auth-card,
+.welcome-card{
+  background:rgba(7,14,24,.82);
+  backdrop-filter:blur(20px);
+  border-color:rgba(0,180,255,.20);
+}
+
+
+/* =========================================
+   DASHBOARD CARDS
+   ========================================= */
+
+.schedule-card,
+.subject-card,
+.progress-card,
+.material-card,
+.overall-card,
+.settings-card{
+  backdrop-filter:blur(12px);
+}
+
+
+/* =========================================
+   BLUE LOGO SUPPORT GLOW
+   ========================================= */
+
+.brand-mark{
+  box-shadow:
+    0 0 20px rgba(0,170,255,.12),
+    0 0 45px rgba(0,120,255,.06);
+}
+
+
+/* =========================================
+   MOBILE PERFORMANCE
+   ========================================= */
+
+@media(max-width:650px){
+
+  body::before{
+    animation-duration:20s;
+  }
+
+  body::after{
+    animation-duration:18s;
+    filter:blur(40px);
+  }
+
+  .app::before,
+  .auth-page::before,
+  .welcome-page::before,
+  .dashboard::before,
+  .page-shell::before,
+  .ishra-page::before{
+    animation-duration:28s;
+    opacity:.42;
+  }
+
+  .ishra-page::after,
+  .dashboard::after{
+    animation-duration:17s;
+  }
+}
+
+/* ===== ISHRA VOICE LISTENING PULSE ===== */
+
+.icon-btn {
+  position: relative;
+  z-index: 1;
+}
+
+.icon-btn.listening {
+  color: #38bdf8;
+  background: rgba(56, 189, 248, 0.12);
+}
+
+/* Outer expanding ring */
+.icon-btn.listening::before {
+  content: "";
+  position: absolute;
+  inset: -5px;
+  border: 2px solid rgba(56, 189, 248, 0.8);
+  border-radius: 50%;
+  animation: voicePulse 1.2s ease-out infinite;
+  pointer-events: none;
+}
+
+/* Second softer ring */
+.icon-btn.listening::after {
+  content: "";
+  position: absolute;
+  inset: -5px;
+  border: 1px solid rgba(34, 211, 238, 0.45);
+  border-radius: 50%;
+  animation: voicePulse 1.2s ease-out infinite 0.6s;
+  pointer-events: none;
+}
+
+@keyframes voicePulse {
+  0% {
+    transform: scale(0.85);
+    opacity: 1;
+  }
+
+  70% {
+    transform: scale(1.8);
+    opacity: 0;
+  }
+
+  100% {
+    transform: scale(1.8);
+    opacity: 0;
+  }
+}
+
+/* Mic icon subtle breathing */
+.icon-btn.listening svg {
+  animation: micBreath 0.9s ease-in-out infinite;
+}
+
+@keyframes micBreath {
+  0%, 100% {
+    transform: scale(1);
+  }
+
+  50% {
+    transform: scale(1.12);
+  }
+}
+
+.ishra-gif-logo {
+  width: 38px;
+  height: 38px;
+  object-fit: cover;
+  object-position: center;
+  display: block;
+  border-radius: 0;
+  transform: scale(1.15);
+}
+
+.brand-small {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 7px 13px;
+  border-radius: 14px;
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+}
+.brand-small .brand-mark.mini .ishra-gif-logo {
+  width: 50px;
+  height: 50px;
+  border-radius: 0;
+  transform: none;
+  object-fit: contain;
+}
+
+.brand-small span {
+  font-size: 16px;
+  font-weight: 700;
+  color: #fff;
+  letter-spacing: 0.3px;
+}
+
+
+/* Remove the small logo box inside the main brand box */
+.brand-small .brand-mark.mini {
+  background: transparent !important;
+  border: none !important;
+  box-shadow: none !important;
+  padding: 0 !important;
+  width: 40px !important;
+  height: 40px !important;
+}
+
+.brand-small .brand-mark.mini .ishra-gif-logo {
+  width: 32px;
+  height: 32px;
+  border-radius: 0;
+  transform: none;
+  object-fit: contain;
+}
+/* =========================================================
+   ISHRA POLISH PASS — smooth navigation, planner, topic AI
+   ========================================================= */
+
+.screen-view{
+  min-height:100vh;
+  animation:screenEnter .42s cubic-bezier(.2,.75,.25,1) both;
+}
+
+@keyframes screenEnter{
+  from{opacity:0;transform:translateY(10px) scale(.992);filter:blur(3px)}
+  to{opacity:1;transform:translateY(0) scale(1);filter:blur(0)}
+}
+
+.animated-card{
+  animation:cardEnter .55s cubic-bezier(.18,.8,.25,1) both;
+}
+
+@keyframes cardEnter{
+  from{opacity:0;transform:translateY(18px) scale(.97)}
+  to{opacity:1;transform:translateY(0) scale(1)}
+}
+
+.stagger{
+  animation:staggerIn .48s cubic-bezier(.2,.75,.25,1) both;
+  animation-delay:calc(var(--i, 0) * 55ms);
+}
+
+@keyframes staggerIn{
+  from{opacity:0;transform:translateY(12px)}
+  to{opacity:1;transform:translateY(0)}
+}
+
+button,
+a,
+input,
+select,
+.subject-card,
+.material-card,
+.progress-card,
+.settings-card,
+.schedule-status,
+.schedule-strip button{
+  transition:transform .2s ease, border-color .2s ease, background .2s ease, box-shadow .2s ease, opacity .2s ease;
+}
+
+button:not(:disabled):active{transform:scale(.985)}
+
+.magnetic-button:hover:not(:disabled){transform:translateY(-2px);box-shadow:0 12px 30px rgba(0,0,0,.24)}
+
+.auth-page,
+.welcome-page{
+  position:relative;
+  isolation:isolate;
+}
+
+.auth-card,
+.welcome-card{
+  position:relative;
+  z-index:2;
+}
+
+.auth-orbit{
+  position:absolute;
+  width:360px;
+  height:360px;
+  border:1px solid rgba(56,189,248,.15);
+  border-radius:50%;
+  box-shadow:0 0 80px rgba(0,174,255,.08), inset 0 0 80px rgba(0,174,255,.05);
+  animation:orbitFloat 8s ease-in-out infinite;
+  pointer-events:none;
+}
+
+.auth-orbit::before,
+.auth-orbit::after{
+  content:"";
+  position:absolute;
+  border-radius:50%;
+  background:#38bdf8;
+  box-shadow:0 0 18px #38bdf8;
+}
+.auth-orbit::before{width:5px;height:5px;top:18%;left:4%}
+.auth-orbit::after{width:4px;height:4px;bottom:13%;right:9%;background:#a78bfa;box-shadow:0 0 18px #a78bfa}
+
+@keyframes orbitFloat{
+  0%,100%{transform:rotate(0deg) scale(1)}
+  50%{transform:rotate(8deg) scale(1.04)}
+}
+
+.ishra-logo{
+  width:42px;
+  height:42px;
+  object-fit:contain;
+  display:block;
+  border-radius:10px;
+  filter:drop-shadow(0 0 9px rgba(0,174,255,.24));
+}
+.ishra-logo.small{width:30px;height:30px}
+.ishra-logo.tiny{width:28px;height:28px;border-radius:7px}
+.ishra-logo.large{width:64px;height:64px}
+
+.brand-mark .ishra-logo{width:46px;height:46px}
+.brand-mark.large .ishra-logo{width:62px;height:62px}
+.brand-small .ishra-logo{flex:none}
+.ishra-brand .ishra-logo{width:31px;height:31px}
+.logo-avatar{background:rgba(12,29,49,.78);border:1px solid rgba(56,189,248,.22)}
+
+.brand-small{min-height:48px}
+
+.calendar-action{
+  width:42px;height:42px;border-radius:13px;
+  display:grid;place-items:center;
+  color:#b9c9df;
+  background:rgba(10,20,34,.68);
+  border:1px solid #263956;
+}
+.calendar-action:hover{color:#67d8ff;border-color:#3b82f6;transform:translateY(-2px)}
+
+.status-grid{
+  display:grid;
+  grid-template-columns:1fr 1.2fr 1fr;
+  gap:12px;
+  margin-bottom:18px;
+}
+.schedule-status{
+  min-width:0;
+  padding:16px;
+  border:1px solid #1c2e47;
+  border-radius:16px;
+  background:rgba(5,14,25,.72);
+}
+.schedule-status.current{
+  border-color:rgba(56,189,248,.42);
+  background:linear-gradient(145deg,rgba(11,34,53,.86),rgba(7,19,31,.78));
+  box-shadow:0 0 28px rgba(0,174,255,.08);
+}
+.schedule-status small{display:block;color:#7f91aa;font-size:10px;letter-spacing:.13em;font-weight:800;margin-bottom:8px}
+.schedule-status strong{display:block;font-size:15px;line-height:1.35}
+.schedule-status span,.schedule-status em{display:block;color:#8294ab;font-size:11px;margin-top:6px;font-style:normal}
+.schedule-status.current em{color:#9ec8e8}
+
+.schedule-strip button.done{opacity:.58}
+.schedule-strip button:hover{transform:translateY(-2px);border-color:#38537a}
+
+.dive-bar{position:relative;overflow:hidden}
+.dive-bar::after{
+  content:"";position:absolute;inset:0;transform:translateX(-110%);
+  background:linear-gradient(90deg,transparent,rgba(255,255,255,.3),transparent);
+  animation:diveShine 4.5s ease-in-out infinite;
+}
+@keyframes diveShine{0%,55%{transform:translateX(-110%)}75%,100%{transform:translateX(110%)}}
+
+.secondary-action{
+  display:inline-flex;align-items:center;gap:8px;
+  border:1px solid #293c58;background:rgba(10,20,34,.72);color:#dbe8f8;
+  border-radius:11px;padding:10px 13px;
+}
+.secondary-action:hover{border-color:#3f80b5;transform:translateY(-2px)}
+
+.topic-row{gap:12px}
+.topic-main{flex:1;min-width:0}
+.topic-main h3{overflow-wrap:anywhere}
+.topic-ai-btn{
+  display:inline-flex;align-items:center;gap:6px;white-space:nowrap;
+  border:1px solid rgba(56,189,248,.28);background:rgba(10,31,48,.78);color:#bcecff;
+  border-radius:11px;padding:8px 10px;font-size:12px;font-weight:700;
+}
+.topic-ai-btn:hover{border-color:#38bdf8;background:rgba(13,48,72,.9);transform:translateY(-2px);box-shadow:0 8px 22px rgba(0,174,255,.1)}
+.complete-btn{
+  display:inline-flex;align-items:center;gap:6px;white-space:nowrap;
+  border:1px solid #2b405d;background:#101d2e;color:#dce7f5;
+  border-radius:11px;padding:9px 12px;font-weight:700;font-size:12px;
+}
+.complete-btn:hover{border-color:#5b7fae;transform:translateY(-2px)}
+
+.context-chip{
+  max-width:280px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;
+  font-size:11px;color:#8bdcff;padding:5px 8px;border-radius:999px;
+  background:rgba(56,189,248,.08);border:1px solid rgba(56,189,248,.18);
+}
+.topic-context-bar{
+  width:min(1150px,96%);margin:0 auto 12px;padding:12px 15px;
+  border:1px solid rgba(56,189,248,.18);background:rgba(4,18,30,.62);
+  border-radius:15px;display:flex;align-items:center;gap:16px;
+  backdrop-filter:blur(12px);
+}
+.topic-context-bar div:first-child{display:flex;flex-direction:column;min-width:0}
+.topic-context-bar span{font-size:10px;text-transform:uppercase;letter-spacing:.12em;color:#6f879f}
+.topic-context-bar strong{font-size:14px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.topic-context-bar div:nth-child(2){margin-left:auto;display:flex;gap:10px;color:#8194ab;font-size:11px}
+
+.quick-actions{display:flex;gap:7px;padding:0 15px 8px;overflow:auto;scrollbar-width:none}
+.quick-actions::-webkit-scrollbar{display:none}
+.quick-actions button{
+  flex:none;display:inline-flex;align-items:center;gap:6px;white-space:nowrap;
+  border:1px solid #233954;background:rgba(11,24,40,.9);color:#a9bed5;
+  border-radius:10px;padding:8px 10px;font-size:11px;
+}
+.quick-actions button:hover{border-color:#3b82f6;color:#d7f4ff;transform:translateY(-1px)}
+
+.markdown-content p{margin:0 0 9px}
+.markdown-content p:last-child{margin-bottom:0}
+.markdown-content h4{margin:0 0 10px;color:#eef7ff;font-size:15px}
+.markdown-content strong{color:#fff}
+.markdown-content code{padding:2px 5px;border-radius:5px;background:rgba(255,255,255,.08);color:#8fe5ff}
+.md-space{height:5px}
+.md-bullet,.md-number{display:flex;gap:8px;margin:6px 0;align-items:flex-start}
+.md-bullet>span:first-child{color:#55d9ff;font-size:16px;line-height:1.2}
+.md-number>b{color:#70dfff}
+
+.modal-pop{animation:modalPop .28s cubic-bezier(.2,.8,.25,1) both}
+@keyframes modalPop{from{opacity:0;transform:translateY(14px) scale(.96)}to{opacity:1;transform:translateY(0) scale(1)}}
+.modal-close{position:absolute;top:14px;right:14px;width:34px;height:34px;border-radius:10px;border:1px solid #263956;background:#101c2d;color:#9db0c9;display:grid;place-items:center}
+.modal-close:hover{color:#fff;border-color:#46658c}
+.language-modal,.upload-modal{position:relative}
+.upload-modal{width:min(470px,100%);background:#0e1727;border:1px solid #2a3e5c;border-radius:24px;padding:28px;box-shadow:0 25px 90px #0009}
+.upload-modal h2{margin:15px 0 7px}
+.upload-modal label{display:block;margin:18px 0 7px;font-size:12px;color:#9aacc2}
+.upload-modal select{width:100%;padding:12px;border-radius:11px;border:1px solid #273953;background:#0a111e;color:#fff}
+
+.material-toolbar{display:flex;gap:10px;margin-bottom:12px}
+.search-field{flex:1;display:flex;align-items:center;gap:8px;padding:0 12px;border:1px solid #263956;background:rgba(8,17,29,.7);border-radius:12px}
+.search-field input{flex:1;border:0;outline:0;background:transparent;color:#fff;padding:12px 0}
+.material-toolbar select{min-width:220px;border:1px solid #263956;background:#0a111e;color:#fff;border-radius:12px;padding:0 12px}
+.material-info{display:flex;align-items:center;gap:9px;padding:11px 13px;margin-bottom:14px;border-radius:12px;background:rgba(56,189,248,.06);border:1px solid rgba(56,189,248,.14);color:#91b1c8;font-size:12px}
+
+.planner-page{max-width:1100px}
+.day-tabs{display:grid;grid-template-columns:repeat(6,1fr);gap:8px;margin-bottom:16px}
+.day-tabs button{padding:12px 8px;border-radius:12px;border:1px solid #233751;background:rgba(8,17,29,.72);color:#8fa3bc;font-weight:700}
+.day-tabs button span{display:block;font-size:10px;margin-top:3px;font-weight:500;color:#637790}
+.day-tabs button.active{border-color:#38bdf8;background:rgba(9,43,64,.78);color:#dff8ff;box-shadow:0 0 22px rgba(0,174,255,.08)}
+.day-tabs button:hover{transform:translateY(-2px);border-color:#3f6f9e}
+.planner-date-note{color:#8093ab;font-size:12px;margin:5px 0 14px}
+.planner-list{display:grid;gap:9px}
+.planner-item{display:grid;grid-template-columns:105px 10px 1fr;gap:13px;align-items:stretch;padding:14px 16px;border:1px solid #1e304a;background:rgba(10,20,33,.72);border-radius:16px}
+.planner-item:hover{border-color:#315a7e;transform:translateX(2px)}
+.planner-item.lunch{opacity:.65}
+.planner-time{display:flex;flex-direction:column;justify-content:center;gap:4px}
+.planner-time b{font-size:12px}.planner-time span{font-size:11px;color:#71849c}
+.planner-line{width:3px;border-radius:5px;background:linear-gradient(#38bdf8,#4f46e5);opacity:.55}
+.planner-info{min-width:0}.planner-badge{display:inline-flex;padding:4px 7px;border-radius:7px;background:rgba(56,189,248,.08);border:1px solid rgba(56,189,248,.13);color:#85dfff;font-size:10px;font-weight:800;margin-bottom:5px}.planner-info h3{margin:0;font-size:14px}.planner-info p{margin:4px 0 0;color:#7f92aa;font-size:11px}
+
+.light{color:#172236}
+.light .auth-card,.light .welcome-card,.light .schedule-card,.light .subject-card,.light .material-card,.light .progress-card,.light .overall-card,.light .settings-card{background:rgba(245,249,255,.86);border-color:#d4dfed}
+.light .muted,.light .material-card p,.light .planner-date-note{color:#607089}
+.light .dashboard-top,.light .topbar,.light .ishra-top{background:rgba(248,251,255,.76);border-color:#d8e1ec}
+.light .schedule-status,.light .planner-item,.light .day-tabs button,.light .search-field{background:rgba(255,255,255,.8);border-color:#d6e1ee;color:#20314a}
+.light .schedule-status span,.light .schedule-status em,.light .planner-info p{color:#687c95}
+.light .chat-panel,.light .workspace,.light .progress-panel{background:rgba(242,247,252,.9)}
+.light .message-bubble{background:#e6eef8;color:#20314a}
+.light .message-row.student .message-bubble{background:#d9ecff;color:#102033}
+.light .chat-input-wrap{background:#fff;border-color:#d1ddea}.light .chat-input-wrap input{color:#172236}
+.light .language-modal,.light .upload-modal{background:#f8fbff;color:#172236}.light .language-option{background:#fff;color:#20314a;border-color:#d6e1ee}
+.light .material-toolbar select,.light .upload-modal select{background:#fff;color:#172236;border-color:#d6e1ee}
+.light .secondary-action,.light .upload-button,.light .complete-btn{background:#fff;color:#20314a;border-color:#ccd9e8}
+
+@media(max-width:850px){
+  .status-grid{grid-template-columns:1fr}
+  .day-tabs{grid-template-columns:repeat(3,1fr)}
+  .topic-row{align-items:flex-start;flex-wrap:wrap}
+  .topic-main{min-width:55%}
+  .topic-ai-btn,.complete-btn{margin-left:auto}
+}
+
+@media(max-width:650px){
+  .status-grid{grid-template-columns:1fr}
+  .material-toolbar{flex-direction:column}
+  .material-toolbar select{min-height:44px;min-width:0}
+  .day-tabs{grid-template-columns:repeat(2,1fr)}
+  .planner-item{grid-template-columns:84px 7px 1fr;gap:9px;padding:12px}
+  .topic-context-bar{align-items:flex-start;flex-wrap:wrap}
+  .topic-context-bar div:nth-child(2){margin-left:0;width:100%;order:3}
+  .context-chip{display:none}
+  .topic-ai-btn span{display:none}
+  .topic-ai-btn{width:40px;height:38px;justify-content:center;padding:4px}
+  .complete-btn{font-size:11px;padding:8px 9px}
+  .ishra-brand span:not(.context-chip){display:none}
+  .auth-orbit{width:280px;height:280px}
+}
+
+@media(prefers-reduced-motion:reduce){
+  *,*::before,*::after{animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important;scroll-behavior:auto!important}
+}
+
+/* =========================================================
+   ISHRA SMART LEARNING TOOLS
+========================================================= */
+.smart-tools-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px;margin:22px 0}.smart-tool-card{display:flex;align-items:center;gap:14px;text-align:left;border:1px solid var(--border,rgba(148,163,184,.18));background:linear-gradient(135deg,rgba(15,27,45,.96),rgba(17,24,39,.92));color:inherit;border-radius:20px;padding:18px;cursor:pointer;transition:transform .28s ease,border-color .28s ease,background .28s ease,box-shadow .28s ease}.smart-tool-card:hover{transform:translateY(-3px);border-color:rgba(56,189,248,.38);box-shadow:0 14px 34px rgba(0,0,0,.16)}.smart-tool-card>svg:first-child{width:30px;height:30px;flex:0 0 auto;color:#38bdf8}.smart-tool-card h3{margin:5px 0 5px;font-size:17px}.smart-tool-card p{margin:0;color:#94a3b8;font-size:13px;line-height:1.5}.smart-tool-card span{font-size:10px;letter-spacing:.12em;color:#38bdf8}.smart-tool-card>svg:last-child{margin-left:auto;opacity:.65}.smart-tool-card.featured{background:linear-gradient(135deg,rgba(8,47,73,.95),rgba(15,27,45,.95));border-color:rgba(56,189,248,.28)}
+.academic-health-card{margin-top:18px;display:flex;align-items:center;gap:16px;padding:20px;border:1px solid rgba(56,189,248,.2);border-radius:20px;background:linear-gradient(135deg,rgba(15,27,45,.98),rgba(20,35,52,.9));transition:transform .25s ease}.academic-health-card:hover{transform:translateY(-2px)}.health-icon{width:48px;height:48px;border-radius:14px;display:grid;place-items:center;background:rgba(56,189,248,.1);color:#38bdf8}.health-copy{flex:1}.health-copy h2{margin:4px 0;font-size:22px}.health-copy p{margin:0;color:#94a3b8;line-height:1.5}.academic-health-card>strong{font-size:28px;color:#38bdf8}
+.feature-hero-card,.quiz-config-card,.quiz-play-card,.quiz-results,.teachback-live-card,.teachback-result{border:1px solid rgba(148,163,184,.16);background:rgba(15,27,45,.78);border-radius:22px;padding:22px;box-shadow:0 14px 40px rgba(0,0,0,.12);animation:cardRise .4s ease both}.feature-hero-card{display:flex;align-items:center;gap:18px}.feature-hero-icon{width:56px;height:56px;border-radius:17px;display:grid;place-items:center;background:rgba(56,189,248,.1);color:#38bdf8}.feature-hero-card h2{margin:5px 0}.feature-hero-card p{margin:0;color:#94a3b8}.feature-hero-card button{margin-left:auto}.quiz-config-card{display:grid;gap:10px}.quiz-config-card label{font-size:12px;font-weight:700;color:#94a3b8;margin-top:5px}.quiz-two-col{display:grid;grid-template-columns:1fr 1fr;gap:14px}.quiz-two-col>div{display:grid;gap:8px}.error-text{color:#fb7185;font-size:13px}.quiz-topline{display:flex;justify-content:space-between;align-items:center;color:#94a3b8;font-size:13px;margin-bottom:18px}.quiz-topline strong{display:flex;align-items:center;gap:6px;color:#38bdf8}.quiz-play-card h2{font-size:24px;line-height:1.35;margin:0 0 20px}.quiz-options{display:grid;gap:10px}.quiz-options button{padding:14px 16px;border-radius:14px;border:1px solid rgba(148,163,184,.16);background:rgba(255,255,255,.025);color:inherit;text-align:left;cursor:pointer;transition:.2s}.quiz-options button:hover,.quiz-options button.selected{border-color:rgba(56,189,248,.5);background:rgba(56,189,248,.08);transform:translateX(2px)}.quiz-nav,.teachback-actions{display:flex;justify-content:flex-end;gap:10px;margin-top:20px;flex-wrap:wrap}.result-hero{display:flex;align-items:center;gap:16px;padding:18px;border-radius:18px;background:rgba(56,189,248,.06);margin-bottom:16px}.result-hero>svg{color:#38bdf8}.result-hero h2{font-size:34px;margin:3px 0}.result-hero p{margin:0;color:#94a3b8}.quiz-result-row{display:flex;justify-content:space-between;gap:18px;padding:16px 0;border-top:1px solid rgba(148,163,184,.12)}.quiz-result-row b{line-height:1.5}.quiz-result-row p{font-size:13px;color:#94a3b8;margin:6px 0}.quiz-result-row small{display:block;color:#94a3b8;line-height:1.5}.correct{color:#4ade80!important}.wrong{color:#fb7185!important}.teachback-live-card{display:grid;gap:16px}.teachback-timer{justify-self:end;display:flex;align-items:center;gap:7px;color:#38bdf8;font-weight:700}.ishra-listener{display:flex;align-items:center;gap:14px;padding:16px;border-radius:17px;background:rgba(56,189,248,.06)}.ishra-listener img{width:42px;height:42px}.ishra-listener div{display:grid;gap:3px}.ishra-listener span,.ishra-listener small{color:#94a3b8}.teachback-live-card textarea{width:100%;resize:vertical;min-height:180px}.danger-btn{border:1px solid rgba(251,113,133,.35);background:rgba(251,113,133,.08);color:#fb7185;border-radius:12px;padding:10px 14px;cursor:pointer}.teachback-feedback-grid{display:grid;grid-template-columns:1fr 1fr;gap:14px}.teachback-feedback-grid>div,.teachback-question-card{border:1px solid rgba(148,163,184,.12);border-radius:16px;padding:16px;background:rgba(255,255,255,.02)}.teachback-feedback-grid ul{padding-left:18px;color:#94a3b8;line-height:1.7}.teachback-question-card{margin-bottom:16px}.teachback-question-card h3{margin:7px 0}.teachback-question-card p{line-height:1.55}
+@keyframes cardRise{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:translateY(0)}}
+.screen-view{animation:screenIn .32s ease both}@keyframes screenIn{from{opacity:0;transform:translateY(7px)}to{opacity:1;transform:translateY(0)}}
+@media(max-width:760px){.smart-tools-grid{grid-template-columns:1fr}.feature-hero-card{align-items:flex-start;flex-wrap:wrap}.feature-hero-card button{margin-left:0;width:100%}.quiz-two-col,.teachback-feedback-grid{grid-template-columns:1fr}.quiz-result-row{flex-direction:column}.quiz-result-row .secondary-action{align-self:flex-start}.smart-tool-card{padding:15px}.academic-health-card{align-items:flex-start}.academic-health-card>strong{margin-left:auto}}
+.health-subject-list{margin-top:12px;border:1px solid rgba(148,163,184,.12);border-radius:18px;overflow:hidden}.health-subject-row{display:grid;grid-template-columns:minmax(0,1fr) auto auto;align-items:center;gap:12px;padding:12px 14px;border-bottom:1px solid rgba(148,163,184,.1)}.health-subject-row:last-child{border-bottom:0}.health-subject-row span{font-size:13px}.health-subject-row small{color:#94a3b8}.health-subject-row b{color:#38bdf8}
+
+
+/* =========================================================
+   FINAL ISHRA PRODUCT POLISH
+========================================================= */
+.dashboard-core-links{margin-bottom:22px}
+.dashboard-core-links button{min-height:64px}
+.smart-tools-grid{margin-top:0}
+
+/* Keep smart-learning cards on the same visual surface as the dashboard. */
+.quiz-config-card,.quiz-play-card,.quiz-results,.teachback-live-card,.teachback-result,.history-card{
+  background:rgba(10,20,32,.72);
+  border-color:rgba(126,154,184,.18);
+}
+.quiz-new-card,.teachback-new-card{min-height:360px;padding:28px;gap:14px}
+.quiz-new-card h2,.teachback-new-card h2{margin:0;font-size:24px}
+.quiz-new-card>.feature-hero-icon,.teachback-new-card>.feature-hero-icon{margin-bottom:2px}
+.quiz-play-card,.teachback-live-card,.quiz-results,.teachback-result{padding:28px}
+.quiz-play-card h2,.math-question{font-size:27px;line-height:1.55;letter-spacing:.01em}
+.quiz-options button{display:flex;align-items:flex-start;gap:12px;padding:17px 18px;line-height:1.55;background:rgba(8,18,30,.55)}
+.option-letter{display:grid;place-items:center;min-width:30px;height:30px;border-radius:9px;background:rgba(56,189,248,.1);color:#8bdcff;font-weight:800;font-size:13px}
+.math-text{display:inline;line-height:1.8}
+.math-expression{font-family:"Cambria Math","STIX Two Math","Times New Roman",serif;font-size:1.08em;letter-spacing:.01em;white-space:nowrap}
+.math-expression sup,.math-expression sub{font-size:.72em;line-height:0}
+.math-frac{display:inline-flex;flex-direction:column;vertical-align:middle;text-align:center;line-height:1.05;margin:0 .16em;min-width:1.2em}
+.math-frac>span:first-child{padding:0 .18em;border-bottom:1px solid currentColor}
+.math-frac>span:last-child{padding:.08em .18em 0}
+.math-root{display:inline-flex;align-items:flex-start;gap:1px}
+.math-root>span{border-top:1px solid currentColor;padding:0 .12em}
+
+.history-card{margin-top:22px;border:1px solid rgba(126,154,184,.18);border-radius:22px;padding:24px;animation:cardRise .4s ease both}
+.history-head{display:flex;align-items:center;justify-content:space-between;gap:12px;margin-bottom:14px}
+.history-head h2{margin:5px 0 0;font-size:22px}
+.history-count{min-width:34px;height:34px;padding:0 10px;border-radius:99px;display:grid;place-items:center;background:rgba(56,189,248,.1);color:#8bdcff;font-weight:800}
+.history-list{display:grid;gap:10px}
+.history-item{width:100%;display:flex;align-items:center;justify-content:space-between;gap:18px;text-align:left;border:1px solid rgba(126,154,184,.14);background:rgba(255,255,255,.018);color:inherit;border-radius:16px;padding:16px 17px;transition:.22s ease}
+.history-item:hover{transform:translateY(-2px);border-color:rgba(56,189,248,.35);background:rgba(56,189,248,.045)}
+.history-item>div{min-width:0;display:grid;gap:4px}.history-item b{font-size:15px}.history-item span,.history-item small{color:#8fa0b5;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}.history-item strong{display:flex;align-items:center;gap:7px;color:#8bdcff;white-space:nowrap}
+.history-open-result{margin-top:22px}
+.subject-health-badge{display:inline-flex;align-items:center;width:max-content;margin-top:11px;padding:6px 10px;border-radius:999px;font-size:11px;font-weight:800;letter-spacing:.01em}
+.health-good{background:rgba(74,222,128,.09);color:#86efac;border:1px solid rgba(74,222,128,.18)}
+.health-attention{background:rgba(250,204,21,.09);color:#fde047;border:1px solid rgba(250,204,21,.18)}
+.health-risk{background:rgba(251,113,133,.09);color:#fda4af;border:1px solid rgba(251,113,133,.18)}
+
+.time-up-modal-backdrop{position:fixed;inset:0;z-index:1000;display:grid;place-items:center;padding:20px;background:rgba(2,7,12,.68);backdrop-filter:blur(8px);animation:fadeIn .2s ease}
+.time-up-modal{width:min(460px,100%);padding:30px;border-radius:24px;border:1px solid rgba(126,154,184,.22);background:#0d1827;color:#e8eef8;box-shadow:0 30px 90px rgba(0,0,0,.45);text-align:center;animation:cardRise .25s ease}
+.time-up-icon{width:58px;height:58px;margin:0 auto 14px;border-radius:18px;display:grid;place-items:center;background:rgba(56,189,248,.1);color:#8bdcff}
+.time-up-modal h2{margin:6px 0 10px;font-size:24px}.time-up-modal p{color:#91a0b5;line-height:1.6;margin:0}
+.time-up-modal .teachback-actions{justify-content:center;margin-top:24px}
+
+.light .quiz-config-card,.light .quiz-play-card,.light .quiz-results,.light .teachback-live-card,.light .teachback-result,.light .history-card{background:rgba(242,247,252,.92);border-color:#d4dfed;color:#172236}
+.light .quiz-options button,.light .history-item{background:rgba(255,255,255,.58);border-color:#d4dfed;color:#172236}
+.light .history-item span,.light .history-item small,.light .quiz-result-row p,.light .quiz-result-row small{color:#607089}
+.light .time-up-modal{background:#f8fbff;color:#172236;border-color:#d4dfed}.light .time-up-modal p{color:#607089}
+.light .math-frac>span:first-child{border-color:#172236}
+
+@keyframes fadeIn{from{opacity:0}to{opacity:1}}
+@media(max-width:760px){
+  .dashboard-core-links{grid-template-columns:1fr}
+  .quiz-new-card,.teachback-new-card,.quiz-play-card,.teachback-live-card,.quiz-results,.teachback-result{padding:20px}
+  .quiz-play-card h2,.math-question{font-size:22px}
+  .history-item{align-items:flex-start}.history-item>strong{font-size:13px}
+}
+
+
+/* =========================
+   PROJECT PPT QR CARD
+   ========================= */
+
+.ppt-qr-card {
+  position: absolute;
+  top: 45px;
+  right: 0;
+
+  display: flex;
+  align-items: center;
+  gap: 16px;
+
+  width: 330px;
+  padding: 14px 18px;
+
+  border: 1px solid rgba(56, 189, 248, 0.35);
+  border-radius: 18px;
+
+  background: rgba(7, 20, 42, 0.72);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+
+  box-shadow:
+    0 10px 35px rgba(0, 0, 0, 0.22),
+    inset 0 0 25px rgba(56, 189, 248, 0.035);
+
+  z-index: 5;
+}
+
+.ppt-qr-image-wrap {
+  width: 92px;
+  height: 92px;
+
+  flex-shrink: 0;
+
+  display: grid;
+  place-items: center;
+
+  border-radius: 12px;
+  overflow: hidden;
+
+  background: #050b16;
+  border: 1px solid rgba(56, 189, 248, 0.2);
+}
+
+.ppt-qr-image-wrap img {
+  width: 78px;
+  height: 78px;
+
+  object-fit: contain;
+
+  /* white background → dark,
+     black QR modules → white */
+  filter: invert(1);
+
+  display: block;
+}
+
+.ppt-qr-info {
+  min-width: 0;
+}
+
+.ppt-qr-title {
+  color: #ffffff;
+
+  font-size: 14px;
+  font-weight: 750;
+
+  line-height: 1.25;
+  margin-bottom: 7px;
+}
+
+.ppt-qr-subtitle {
+  color: #8ea5c4;
+
+  font-size: 11px;
+  line-height: 1.45;
+}
+
+
+/* Dashboard heading area */
+.dashboard-hero,
+.dashboard-header,
+.hero-header {
+  position: relative;
+}
+
+
+/* Mobile */
+@media (max-width: 900px) {
+  .ppt-qr-card {
+    position: relative;
+    top: auto;
+    right: auto;
+
+    width: 100%;
+    margin-top: 20px;
+  }
+}
+
+@media (max-width: 520px) {
+  .ppt-qr-card {
+    padding: 12px;
+    gap: 13px;
+  }
+
+  .ppt-qr-image-wrap {
+    width: 110px;
+    height: 110px;
+  }
+
+  .ppt-qr-image-wrap img {
+    width: 96px;
+    height: 96px;
+  }
+
+  .ppt-qr-title {
+    font-size: 13px;
+  }
+
+  .ppt-qr-subtitle {
+    font-size: 10px;
+  }
+}
+
+.ppt-qr-link {
+  display: inline-block;
+  color: #8ea5c4;
+  font-size: 13px;
+  font-weight: 600;
+  line-height: 1.5;
+  text-decoration: none;
+  transition: color 0.2s ease;
+}
+
+.ppt-qr-link:hover {
+  color: #38bdf8;
+  text-decoration: underline;
+}
+
+
+/* =====================================================
+   ISHRA LOGIN BRAND — FINAL
+===================================================== */
+
+.ishra-login-brand {
+  position: relative;
+  width: fit-content;
+  margin-bottom: 13px;
+  padding: 2px;
+  border-radius: 18px;
+  overflow: hidden;
+}
+
+/* Rotating shine around ISHRA box */
+.ishra-login-brand::before {
+  content: "";
+  position: absolute;
+  inset: -70%;
+
+  background: conic-gradient(
+    from 0deg,
+    transparent 0deg,
+    transparent 300deg,
+    rgba(56, 189, 248, 0.04) 320deg,
+    rgba(56, 189, 248, 0.85) 340deg,
+    rgba(255, 255, 255, 0.95) 350deg,
+    rgba(56, 189, 248, 0.12) 358deg,
+    transparent 360deg
+  );
+
+  animation: ishraBorderShine 3.2s linear infinite;
+}
+
+
+/* Main ISHRA capsule */
+.ishra-login-brand-inner {
+  position: relative;
+  z-index: 1;
+
+  display: flex;
+  align-items: center;
+  gap: 12px;
+
+  padding: 7px 16px 7px 8px;
+
+  border-radius: 16px;
+
+  background: #0e1625;
+  border: 1px solid rgba(56, 189, 248, 0.18);
+}
+
+
+/* Logo */
+.ishra-login-brand .brand-mark {
+  width: 50px;
+  height: 50px;
+
+  margin: 0;
+  border-radius: 14px;
+
+  background: #122036;
+  border: 1px solid rgba(56, 189, 248, 0.22);
+
+  display: grid;
+  place-items: center;
+
+  flex-shrink: 0;
+}
+
+
+/* ISHRA text */
+.ishra-login-brand .brand-name {
+  color: #ffffff;
+
+  font-size: 1.38rem;
+  font-weight: 850;
+
+  letter-spacing: 0.13em;
+  line-height: 1;
+
+  animation: ishraTextPulse 2.8s ease-in-out infinite;
+}
+
+
+/* Full form */
+.ishra-full-form {
+  width: 100%;
+  max-width: none;
+
+  margin-bottom: 10px;
+
+  font-size: 9.5px;
+  line-height: 1.4;
+
+  letter-spacing: 0.055em;
+
+  color: #8291a7;
+
+  white-space: nowrap;
+}
+
+
+/* Main tagline */
+.auth-card .ishra-tagline {
+  margin: 0 0 20px;
+
+  color: #ffffff;
+
+  font-size: 25px;
+  font-weight: 800;
+
+  line-height: 1.15;
+  letter-spacing: -0.02em;
+
+  max-width: 420px;
+}
+
+
+/* =====================================================
+   ANIMATIONS
+===================================================== */
+
+@keyframes ishraBorderShine {
+
+  from {
+    transform: rotate(0deg);
+  }
+
+  to {
+    transform: rotate(360deg);
+  }
+
+}
+
+
+@keyframes ishraTextPulse {
+
+  0%,
+  100% {
+    opacity: 0.9;
+
+    text-shadow:
+      0 0 0 rgba(56, 189, 248, 0);
+  }
+
+  50% {
+    opacity: 1;
+
+    text-shadow:
+      0 0 14px rgba(56, 189, 248, 0.28);
+  }
+
+}
+
+
+/* =====================================================
+   MOBILE
+===================================================== */
+
+@media (max-width: 520px) {
+
+  .ishra-login-brand {
+    margin-bottom: 12px;
+  }
+
+  .ishra-login-brand-inner {
+    gap: 11px;
+    padding: 6px 13px 6px 7px;
+  }
+
+  .ishra-login-brand .brand-mark {
+    width: 46px;
+    height: 46px;
+
+    border-radius: 13px;
+  }
+
+  .ishra-login-brand .brand-name {
+    font-size: 1.25rem;
+  }
+
+  .ishra-full-form {
+    font-size: 8.5px;
+    letter-spacing: 0.06em;
+  }
+
+  .auth-card .ishra-tagline {
+    font-size: 23px;
+    line-height: 1.18;
+
+    margin-bottom: 18px;
+  }
+
+}
