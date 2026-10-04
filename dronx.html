@@ -1,0 +1,318 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>dronX DLT Protocol | Multi-Sector Blockchain</title>
+<style>
+  :root {
+    --bg-dark: #0a0608;
+    --card-bg: rgba(26, 12, 16, 0.85);
+    --border-color: #8c3a45;
+    --accent-red: #e74c3c;
+    --accent-green: #2ecc71;
+    --accent-gold: #f39c12;
+    --text-primary: #f5f5f5;
+    --text-secondary: #b59fa4;
+    --font-mono: 'Courier New', Courier, monospace;
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    background: radial-gradient(circle at 10% 20%, #1a080d 0%, var(--bg-dark) 90%);
+    color: var(--text-primary);
+    font-family: -apple-system, sans-serif;
+    min-height: 100vh;
+    padding: 20px;
+  }
+
+  header {
+    display: flex; justify-content: space-between; align-items: center;
+    border-bottom: 1px solid var(--border-color); padding-bottom: 15px; margin-bottom: 25px;
+  }
+  .logo {
+    width: 40px; height: 40px; background: linear-gradient(135deg, #c0392b, #8e44ad);
+    border-radius: 8px; display: flex; align-items: center; justify-content: center;
+    font-weight: 900; font-size: 20px; box-shadow: 0 0 15px rgba(231, 76, 60, 0.4);
+    margin-right: 12px;
+  }
+  .brand { display: flex; align-items: center; }
+  .status-badge {
+    background: rgba(46, 204, 113, 0.15); color: var(--accent-green);
+    border: 1px solid var(--accent-green); padding: 5px 12px; border-radius: 20px;
+    font-size: 12px; font-weight: bold;
+  }
+  .node-pulse {
+    width: 8px; height: 8px; background: var(--accent-green); border-radius: 50%;
+    display: inline-block; margin-right: 5px; animation: pulse 1.5s infinite;
+  }
+  @keyframes pulse { 0% {opacity:0.3;} 50% {opacity:1;} 100% {opacity:0.3;} }
+
+  .grid-container { display: grid; grid-template-columns: 350px 1fr; gap: 20px; }
+  @media (max-width: 900px) { .grid-container { grid-template-columns: 1fr; } }
+
+  .panel {
+    background: var(--card-bg); border: 1px solid rgba(140, 58, 69, 0.5);
+    border-radius: 12px; padding: 20px; backdrop-filter: blur(10px);
+  }
+  .panel h2 { font-size: 16px; color: var(--text-secondary); margin-bottom: 15px; text-transform: uppercase; }
+
+  .form-group { margin-bottom: 15px; }
+  label { display: block; font-size: 12px; color: var(--text-secondary); margin-bottom: 5px; }
+  input, select, textarea {
+    width: 100%; background: #12070a; border: 1px solid var(--border-color);
+    border-radius: 6px; padding: 10px; color: #fff; font-size: 13px; outline: none;
+  }
+  input:focus, select:focus, textarea:focus { border-color: var(--accent-gold); }
+
+  button {
+    width: 100%; background: linear-gradient(135deg, #8c3a45, #c0392b);
+    border: none; padding: 12px; border-radius: 6px; color: #fff;
+    font-weight: bold; cursor: pointer; transition: 0.2s;
+  }
+  button:hover { filter: brightness(1.2); }
+  .btn-danger { background: transparent; border: 1px solid var(--accent-red); color: var(--accent-red); margin-top: 15px; }
+  .btn-danger:hover { background: rgba(231, 76, 60, 0.1); }
+
+  .chain-scroll { display: flex; flex-direction: column; gap: 15px; overflow-y: auto; max-height: 70vh; padding-right: 10px; }
+  .block-card {
+    background: rgba(18, 7, 10, 0.95); border: 1px solid var(--accent-green);
+    border-radius: 8px; padding: 15px; position: relative; border-left: 5px solid var(--accent-green);
+  }
+  .block-card.tampered { border-color: var(--accent-red); border-left-color: var(--accent-red); box-shadow: 0 0 15px rgba(231,76,60,0.3); }
+
+  .hash-text { font-family: var(--font-mono); font-size: 11px; word-break: break-all; color: var(--accent-green); }
+  .prev-hash { color: #888; }
+  .tampered .hash-text { color: var(--accent-red); }
+
+  .tx-badge { display: inline-block; font-size: 10px; padding: 3px 8px; border-radius: 4px; font-weight: bold; margin-bottom: 8px; }
+  .badge-health { background: #27ae60; color: #fff; }
+  .badge-supply { background: #d35400; color: #fff; }
+  .badge-nft { background: #8e44ad; color: #fff; }
+
+</style>
+</head>
+<body>
+
+<header>
+  <div class="brand">
+    <div class="logo">dX</div>
+    <div>
+      <h1 style="font-size: 20px;">dronX DLT Protocol</h1>
+      <p style="font-size: 12px; color: var(--text-secondary);">Enterprise Multi-Sector Ledger & NFT Engine (PS: 26194)</p>
+    </div>
+  </div>
+  <div class="status-badge" id="networkStatus"><span class="node-pulse"></span> BOBI DAEMON: VALIDATING</div>
+</header>
+
+<div class="grid-container">
+  
+  <div class="panel">
+    <h2>Issue Asset / Mint NFT</h2>
+    
+    <div class="form-group">
+      <label>Target Sector</label>
+      <select id="sectorSelect">
+        <option value="SupplyChain">📦 Supply Chain (Counterfeit Protection)</option>
+        <option value="Healthcare">🏥 Healthcare (Secure Medical Records)</option>
+        <option value="NFT">💎 Digital Assets (NFT Ownership)</option>
+      </select>
+    </div>
+
+    <div class="form-group">
+      <label>Asset UID / Token ID</label>
+      <input type="text" id="assetId" placeholder="e.g. MED-7781 or NFT-ART-001">
+    </div>
+
+    <div class="form-group">
+      <label>Immutable Data Payload</label>
+      <textarea id="payloadData" rows="3" placeholder="Enter manufacturer details, prescription info, or NFT metadata..."></textarea>
+    </div>
+
+    <button id="mineBtn" onclick="mintBlock()">🔨 Mine SHA-256 Block</button>
+
+    <hr style="border: 0; border-top: 1px solid var(--border-color); margin: 25px 0;">
+    
+    <h2>Security Audit</h2>
+    <p style="font-size: 11px; color: var(--text-secondary);">Test the ledger's cryptography. Attempt to alter saved data and watch the chain break.</p>
+    <button class="btn-danger" onclick="simulateHack()">⚠️ Simulate Data Breach</button>
+  </div>
+
+  <div class="panel">
+    <h2 style="display:flex; justify-content:space-between;">
+      <span>Distributed Ledger</span>
+      <span id="blockCount" style="color:var(--accent-gold); font-size:12px;">Blocks: 0</span>
+    </h2>
+    <div class="chain-scroll" id="chainExplorer"></div>
+  </div>
+
+</div>
+
+<script>
+// --- WEB AUDIO API (For Alerts) ---
+const audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+function playTone(type) {
+  if (audioCtx.state === 'suspended') audioCtx.resume();
+  const osc = audioCtx.createOscillator();
+  const gain = audioCtx.createGain();
+  osc.connect(gain);
+  gain.connect(audioCtx.destination);
+  
+  if(type === 'success') {
+    osc.type = 'sine';
+    osc.frequency.setValueAtTime(528, audioCtx.currentTime); // 528Hz Drone
+    gain.gain.setValueAtTime(0.2, audioCtx.currentTime);
+    gain.gain.exponentialRampToValueAtTime(0.01, audioCtx.currentTime + 0.5);
+  } else {
+    osc.type = 'sawtooth'; // Harsh tone for hacking
+    osc.frequency.setValueAtTime(150, audioCtx.currentTime);
+    osc.frequency.linearRampToValueAtTime(100, audioCtx.currentTime + 0.3);
+    gain.gain.setValueAtTime(0.3, audioCtx.currentTime);
+    gain.gain.linearRampToValueAtTime(0.01, audioCtx.currentTime + 0.3);
+  }
+  osc.start();
+  osc.stop(audioCtx.currentTime + 0.5);
+}
+
+// --- SHA-256 CRYPTOGRAPHY ---
+async function sha256(message) {
+  const msgBuffer = new TextEncoder().encode(message);
+  const hashBuffer = await crypto.subtle.digest('SHA-256', msgBuffer);
+  const hashArray = Array.from(new Uint8Array(hashBuffer));
+  return hashArray.map(b => b.toString(16).padStart(2, '0')).join('');
+}
+
+// --- BLOCKCHAIN LOGIC ---
+class Block {
+  constructor(index, data, previousHash = '') {
+    this.index = index;
+    this.timestamp = new Date().toLocaleTimeString();
+    this.data = data;
+    this.previousHash = previousHash;
+    this.nonce = 0;
+    this.hash = '';
+  }
+  async calculateHash() {
+    return await sha256(this.index + this.previousHash + this.timestamp + JSON.stringify(this.data) + this.nonce);
+  }
+  async mineBlock(difficulty) {
+    const target = Array(difficulty + 1).join("0");
+    this.hash = await this.calculateHash();
+    while (!this.hash.startsWith(target)) {
+      this.nonce++;
+      this.hash = await this.calculateHash();
+    }
+  }
+}
+
+class dronXBlockchain {
+  constructor() {
+    this.chain = [];
+    this.difficulty = 2; // Required leading zeros
+  }
+  async init() {
+    const genesis = new Block(0, { sector: 'System', uid: 'ROOT', payload: 'dronX Enterprise Ledger Initialized' }, "0000000000000000000000000000000000000000000000000000000000000000");
+    await genesis.mineBlock(1);
+    this.chain.push(genesis);
+    updateUI();
+  }
+  async addBlock(newBlock) {
+    newBlock.previousHash = this.chain[this.chain.length - 1].hash;
+    await newBlock.mineBlock(this.difficulty);
+    this.chain.push(newBlock);
+  }
+  async checkValidity() {
+    for (let i = 1; i < this.chain.length; i++) {
+      const currentBlock = this.chain[i];
+      const recalculatedHash = await currentBlock.calculateHash();
+      if (currentBlock.hash !== recalculatedHash || currentBlock.previousHash !== this.chain[i - 1].hash) return i;
+    }
+    return -1;
+  }
+}
+
+const ledger = new dronXBlockchain();
+ledger.init();
+
+// --- BOBI DAEMON (Background Validator) ---
+setInterval(async () => {
+  const invalidIndex = await ledger.checkValidity();
+  const statusEl = document.getElementById("networkStatus");
+  if (invalidIndex !== -1) {
+    statusEl.innerHTML = `⚠️ BOBI DAEMON: BREACH DETECTED`;
+    statusEl.style.color = "var(--accent-red)";
+    statusEl.style.borderColor = "var(--accent-red)";
+    statusEl.style.background = "rgba(231,76,60,0.1)";
+  } else {
+    statusEl.innerHTML = `<span class="node-pulse"></span> BOBI DAEMON: VALIDATING`;
+    statusEl.style.color = "var(--accent-green)";
+    statusEl.style.borderColor = "var(--accent-green)";
+    statusEl.style.background = "rgba(46,204,113,0.15)";
+  }
+}, 3000); // Bobi checks every 3 seconds
+
+// --- UI FUNCTIONS ---
+async function mintBlock() {
+  const btn = document.getElementById("mineBtn");
+  btn.disabled = true; btn.innerText = "Mining PoW...";
+  
+  const sector = document.getElementById("sectorSelect").value;
+  const uid = document.getElementById("assetId").value || "ASSET-000";
+  const payload = document.getElementById("payloadData").value || "Verified entry.";
+
+  const newBlock = new Block(ledger.chain.length, { sector, uid, payload });
+  await ledger.addBlock(newBlock);
+  
+  playTone('success');
+  updateUI();
+  
+  document.getElementById("assetId").value = "";
+  document.getElementById("payloadData").value = "";
+  btn.disabled = false; btn.innerText = "🔨 Mine SHA-256 Block";
+}
+
+async function updateUI() {
+  const container = document.getElementById("chainExplorer");
+  container.innerHTML = "";
+  const invalidIndex = await ledger.checkValidity();
+
+  ledger.chain.forEach((block, index) => {
+    const isTampered = invalidIndex !== -1 && index >= invalidIndex;
+    let badgeClass = "badge-nft";
+    if(block.data.sector === 'Healthcare') badgeClass = 'badge-health';
+    if(block.data.sector === 'SupplyChain') badgeClass = 'badge-supply';
+
+    const card = document.createElement("div");
+    card.className = `block-card ${isTampered ? 'tampered' : ''}`;
+    card.innerHTML = `
+      <div style="display:flex; justify-content:space-between; margin-bottom:10px;">
+        <strong>Block #${block.index}</strong>
+        <span class="tx-badge ${badgeClass}">${block.data.sector}</span>
+      </div>
+      <div style="font-size:12px; margin-bottom:5px;"><strong>Asset ID:</strong> ${block.data.uid}</div>
+      <div style="font-size:12px; margin-bottom:10px; color:var(--text-secondary);">${block.data.payload}</div>
+      
+      <div><span style="font-size:10px; color:#888;">Prev Hash:</span><br>
+      <span class="hash-text prev-hash">${block.previousHash.substring(0,32)}...</span></div>
+      
+      <div style="margin-top:5px;"><span style="font-size:10px; color:#888;">Block Hash:</span><br>
+      <span class="hash-text">${block.hash.substring(0,32)}...</span></div>
+    `;
+    container.insertBefore(card, container.firstChild); // Newest on top
+  });
+  document.getElementById("blockCount").innerText = `Blocks: ${ledger.chain.length}`;
+}
+
+async function simulateHack() {
+  if (ledger.chain.length < 2) {
+    alert("Mine at least 1 block first!");
+    return;
+  }
+  ledger.chain[1].data.payload = "HACKED DATA: Fake Ownership Assigned!";
+  playTone('error');
+  alert("Adversarial Attack: Block #1 data changed. Watch Bobi Daemon catch the hash mismatch!");
+  updateUI();
+}
+</script>
+</body>
+</html>
